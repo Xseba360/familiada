@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Familiada</title>
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.6.0/css/bootstrap-slider.min.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script>
+	function pauseall() {
+		var allaudio = document.getElementsByTagName('audio');
+
+		allaudio.zle.pause();
+		allaudio.dobrze.pause();
+		allaudio.intro.pause();
+		allaudio.intro2.pause();
+	}
+
+	function checkmute() {
+		var mutebox = document.getElementById('mutesounds');
+		if (mutebox.checked == true) {
+			pauseall();
+		} else {
+			return false;
+		}
+	}
+	function notgood() {
+		checkmute();
+		var audio = document.getElementById('zle');
+		audio.currentTime = 0;
+		audio.play();
+	}
+	function good() {
+		checkmute();
+		var audio = document.getElementById('dobrze');
+		audio.currentTime = 0;
+		audio.play();
+	}
+	function intro() {
+		checkmute();
+		var audio = document.getElementById('intro');
+		audio.currentTime = 0;
+		audio.play();
+	}
+	function intro2() {
+		checkmute();
+		var audio = document.getElementById('intro2');
+		audio.currentTime = 0;
+		audio.play();
+	}
+</script>
+</head>
+
+<body>
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+
+				<a class="navbar-brand" href="#">Familiada</a>
+			</div>
+		</div>
+	</nav>
+	<audio id="dobrze" src="snd/dobrze.mp3" preload=""></audio>
+	<audio id="zle" src="snd/zle_2.mp3" preload=""></audio>
+	<audio id="intro" src="snd/intro.mp3" preload=""></audio>
+	<audio id="intro2" src="snd/przerywnik.mp3" preload=""></audio>
+	<div class="container-fluid">		
+		<div class="well well-lg col-md-4 col-md-offset-4 col-sm-12 col-sm-offset-0">
+
+			<div class="row">
+				<div class="col-xs-6">
+					<div class="btn-group btn-group-justified" role="group" aria-label="...">
+						<div class="btn-group" role="group">
+							<button type="button" class="btn btn-lg btn-danger" onclick="notgood();">ŹLE <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-6">
+					<div class="btn-group btn-group-justified" role="group" aria-label="...">
+						<div class="btn-group" role="group">
+							<button type="button" class="btn btn-lg btn-success" onclick="good();">DOBRZE <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="well well-lg col-md-4 col-md-offset-4 col-sm-12 col-sm-offset-0">
+
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 introdiv">
+					<div class="btn-group btn-group-justified" role="group" aria-label="...">
+						<div class="btn-group" role="group">
+							<button type="button" class="btn btn-lg btn-primary" onclick="intro();">INTRO</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6 intro2div">
+					<div class="btn-group btn-group-justified" role="group" aria-label="...">
+						<div class="btn-group" role="group">
+							<button type="button" class="btn btn-lg btn-primary" onclick="intro2();">PRZERYWNIK</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="well well-lg col-md-4 col-md-offset-4 col-sm-12 col-sm-offset-0">
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">		
+					<button type="button" class="btn btn-danger" onclick="pauseall();">STOP</button>
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" checked="" id="mutesounds">
+							Wyciszaj dźwięki
+						</label>
+					</div>
+					<input id="volume" type="text"/><br/>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					<button type="button" class="btn btn-info pull-right" data-toggle="modal" data-target="#kbdShortcuts"><i class="fa fa-lg fa-keyboard-o" aria-hidden="false"></i></button>
+
+					<div class="modal fade" id="kbdShortcuts" role="dialog">
+						<div class="modal-dialog">
+							
+							<!-- Modal content-->
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">Skróty klawiszowe</h4>
+									</div>
+								<div class="modal-body">
+									<p>
+										<ul>
+											<li>
+												<kbd><kbd>w</kbd></kbd> - Źle
+											</li>
+											<li>
+												<kbd><kbd>s</kbd></kbd> - Dobrze
+											</li>
+											<li>
+												<kbd><kbd>a</kbd></kbd> - Intro
+											</li>
+											<li>
+												<kbd><kbd>d</kbd></kbd> - Przerywnik
+											</li>
+											<li>
+												<kbd><kbd>shift</kbd></kbd> - Stop
+											</li>
+										</ul>
+									</p>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<!-- Bootstrap JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.6.0/bootstrap-slider.min.js"></script>
+	<script type="text/javascript">
+		$("#volume").slider({ min: 0, max: 100, value: 100, focus: true });
+		
+		$("#volume").on("slide", function(slideEvt) {
+			$("audio").get(0).volume = slideEvt.value / 100;
+			$("audio").get(1).volume = slideEvt.value / 100;
+			$("audio").get(2).volume = slideEvt.value / 100;
+			$("audio").get(3).volume = slideEvt.value / 100;
+			console.log(slideEvt.value / 100);
+		});
+	</script>
+	<script src="js/mousetrap.min.js"></script>
+	<script type="text/javascript">
+		Mousetrap.bind('w', function() { notgood(); });
+		Mousetrap.bind('s', function() { good(); });
+		Mousetrap.bind('a', function() { intro(); });
+		Mousetrap.bind('d', function() { intro2(); });
+
+		Mousetrap.bind('shift', function() { pauseall(); });
+	</script>
+</body>
+</html>
